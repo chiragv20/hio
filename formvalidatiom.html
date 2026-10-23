@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Validation Example</title>
+    <style>
+        body{font-family: Arial, sans-serif;
+        background-color: aliceblue;
+        }
+        .container{
+            width:500px;
+            margin:50px auto;
+            background:white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        h2{
+            text-align :center;
+            color: darkblue;
+        }
+      label{
+        font-weight: bold;
+
+      }
+      input[type=text],
+      input[type=email],
+      input[type=password],
+      select,
+      textarea{
+        width:100%;
+        padding:8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid gray;
+        border-radius: 5px;
+
+      }
+      textarea{
+         resize:none;
+      }
+      .buttons{
+       text-align:center;
+
+      }
+     input[type=submit]{
+       background:green;
+       color: white;
+       border:none;
+       padding:10px 20px;
+       border-radius: 5px;
+       cursor:pointer;
+
+     }
+     input[type=reset]{
+       background:red;
+       color: white;
+       border:none;
+       padding:10px 20px;
+       border-radius: 5px;
+       cursor:pointer;
+       
+     }
+     input[type=submit]:hover{
+        background: darkgreen;
+     }
+     input[type=reset]:hover{
+        background: darkred;
+     }
+
+
+
+
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Student Registration Form</h2>
+            <form id="myForm">
+                <label>Name</label>
+                <input type="text" id="Name">
+                <label>Email</label>
+                <input type="email" id="email">
+                <label>Password</label>
+                <input type="password" id ="password">
+                <label>Gender</label><br>
+                <input type="radio" name="gender" value="Male"> Male
+                <input type="radio" name="gender" value="Female"> Female
+                <br><br>
+                <label>Hobbies</label><br>
+                <input type="checkbox" name="hobby"> Reading
+                <input type="checkbox" name="hobby"> Sports
+                <input type="checkbox" name="hobby"> Music
+                <br><br>
+                <label>state</label>
+                <select id="state">
+                <option value="">Select State</option>
+                <option>Karnataka</option>
+                <option>Andhra Pradesh</option>
+                <option>Telangana</option>
+                <option>Tamil Nadu</option>
+                <option>Kerala</option>
+                </select>
+              <label>Address</label>
+              <textarea id="address" rows="4"></textarea>
+              <div class="buttons">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+              </div>
+
+            </form>
+        </div>
+        <script>
+        document.getElementById("myForm").onsubmit = function(evevnt){
+            event.preventDefault();
+            let name= document.getElementById("name").value.trim();
+            let email= document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let state= document.getElementById("state").value.trim();
+            let address= document.getElementById("address").value.trim();
+            let gender = document.querySelector("input[name="gender"]:checked");
+            let hobbies = document.querySelector("input[name="hobbies"]:checked");
+            if(name==""){
+                alert("Please enter Name");
+                document.getElementById('name').focus();
+                return;
+            }
+
+            if(email==""){
+                alert("Please enter Email");
+                document.getElementById('email').focus();
+                return;
+            }
+
+          if(password==""){
+                alert("Password must contain  at least 6 Charcters");
+                document.getElementById('password').focus();
+                return;
+            }
+          if(state==""){
+                alert("Please enter State");
+                document.getElementById('state').focus();
+                return;
+            }
+           if(address==""){
+                alert("Please enter Address");
+                document.getElementById('Address').focus();
+                return;
+            }
+         if(gender==""){
+                alert("Please enter Gender");
+                document.getElementById('Gender').focus();
+                return;
+            }
+         alert("Form Submitted Successfully");
+        }
+        </script>
+    </body>
+</html>
